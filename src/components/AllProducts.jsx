@@ -1,23 +1,32 @@
 import React from 'react';
 import useFetch from '../hooks/useFetch';
 import useRouting from '../hooks/useRouting';
-import { useParams } from 'react-router-dom';
 
-function ProductsList() {
-  const { category } = useParams();
-  const { data, loading, error } = useFetch(
-    `https://fakestoreapi.com/products/category/${category}`
-  );
+function AllProducts() {
   const { navigateTo } = useRouting();
+  const {
+    data: products,
+    loading,
+    error,
+  } = useFetch('https://fakestoreapi.com/products');
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <div>
       {loading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}
-      {data && (
+      {products && (
         <ul>
-          {data.map((product) => (
+          {products.map((product) => (
             <li key={product.id}>
+              {' '}
               <img src={product.image} alt={product.title} />
               {product.title} - {product.price}
               <button onClick={() => navigateTo(`/product/${product.id}`)}>
@@ -31,4 +40,4 @@ function ProductsList() {
   );
 }
 
-export default ProductsList;
+export default AllProducts;

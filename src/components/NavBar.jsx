@@ -1,6 +1,5 @@
 import React from 'react';
 import useRouting from '../hooks/useRouting';
-import { Routes, Route } from 'react-router-dom';
 import CategoriesList from './CategoriesList';
 
 function NavBar() {
@@ -35,10 +34,7 @@ function NavBar() {
           </li>
         </ul>
       </div>
-      <Routes>
-        <Route path='/' element={<CategoriesList />} />
-        <Route path='/products' element={<CategoriesList />} />
-      </Routes>
+      <CategoriesList />
     </nav>
   );
 }

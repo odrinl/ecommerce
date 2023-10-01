@@ -10,7 +10,6 @@ function App() {
   return (
     <Router>
       <ErrorBoundary>
-        {/* Use JSX fragment instead of a div */}
         <>
           <div className='App'>
             <NavBar />

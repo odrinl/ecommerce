@@ -32,7 +32,7 @@ function CategoriesList() {
             <li key={index}>
               <button
                 className={
-                  currentRoute === `/products/${category}` ? 'active' : ''
+                  currentRoute === `/category/${category}` ? 'active' : ''
                 }
                 onClick={() => handleCategoryClick(category)}
               >
