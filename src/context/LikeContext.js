@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 export const Context = createContext();
 
@@ -17,6 +17,19 @@ export const ContextProvider = ({ children }) => {
       setLikedProducts([...likedProducts, productId]);
     }
   };
+
+  // Load liked products from localStorage on initial render
+  useEffect(() => {
+    const storedLikedProducts = localStorage.getItem('likedProducts');
+    if (storedLikedProducts) {
+      setLikedProducts(JSON.parse(storedLikedProducts));
+    }
+  }, []);
+
+  // Update localStorage when likedProducts state changes
+  useEffect(() => {
+    localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
+  }, [likedProducts]);
 
   return (
     <Context.Provider
