@@ -1,6 +1,6 @@
 {
   "name": "new-ecommerce",
-  "homepage": "https://odrinl.github.io/ecommerce/",
+  "homepage": "https://odrinl-ecommerce.netlify.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
