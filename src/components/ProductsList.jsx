@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 
 function ProductsList() {
   const { category } = useParams();
-  const { data, loading, error } = useFetch(
+  const { data, isLoading, error } = useFetch(
     `https://fakestoreapi.com/products/category/${category}`
   );
 
   return (
     <div>
-      {loading && <div>Loading...</div>}
+      {isLoading && <div>Products are loading...</div>}
       {error && <div>Error: {error.message}</div>}
       {data && (
         <ul>

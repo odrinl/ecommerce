@@ -11,7 +11,8 @@ function MainArea() {
   return (
     <div className='main-area'>
       <Routes>
-        <Route path='/products' element={<AllProducts key='all-products' />} />
+        <Route path='/' element={<AllProducts />} />
+        <Route path='/products' element={<AllProducts />} />
         <Route path='category/:category' element={<ProductsList />} />
         <Route path='/product/:id' element={<ProductItem />} />
         <Route path='/favorites' element={<Favorites />} />

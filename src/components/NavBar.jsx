@@ -4,11 +4,13 @@ import { Link, useLocation } from 'react-router-dom';
 
 function NavBar() {
   const location = useLocation();
+  const isAllProductsActive =
+    location.pathname === '/' || location.pathname === '/products';
   return (
     <nav>
       <div className='nav'>
         <Link to={'/'}>
-          <button className={location.pathname === '/' ? 'active' : ''}>
+          <button>
             <h1>My Shop</h1>
           </button>
         </Link>
@@ -16,9 +18,7 @@ function NavBar() {
         <ul>
           <li>
             <Link to={'/products'}>
-              <button
-                className={location.pathname === '/products' ? 'active' : ''}
-              >
+              <button className={isAllProductsActive ? 'active' : ''}>
                 All Products
               </button>
             </Link>
