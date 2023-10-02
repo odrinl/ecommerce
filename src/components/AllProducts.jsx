@@ -1,8 +1,10 @@
 import React from 'react';
 import useFetch from '../hooks/useFetch';
 import { Link } from 'react-router-dom';
+import { useLikeContext } from '../context/LikeContext';
 
 function AllProducts() {
+  const { likedProducts, toggleLike } = useLikeContext();
   const {
     data: products,
     isLoading,
@@ -17,8 +19,15 @@ function AllProducts() {
         <ul>
           {products.map((product) => (
             <li key={product.id}>
-              {' '}
-              <img src={product.image} alt={product.title} />
+              <i
+                className={
+                  likedProducts.includes(product.id)
+                    ? 'bi bi-heart-fill'
+                    : 'bi bi-heart'
+                }
+                onClick={() => toggleLike(product.id)}
+              ></i>
+              {/* <img src={product.image} alt={product.title} /> */}
               {product.title} - {product.price}
               <Link to={`/product/${product.id}`}>
                 <button>More...</button>

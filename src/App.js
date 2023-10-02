@@ -5,6 +5,7 @@ import MainArea from './components/MainArea';
 import ErrorBoundary from './errorHandling/ErrorBoundary';
 
 import './App.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function App() {
   return (
