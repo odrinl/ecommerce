@@ -36,7 +36,7 @@ function AllProducts() {
                     />
                   </div>
                   <div className='card-footer d-flex flex-column mt-auto'>
-                    <Link to={`/products/${product.id}`}>
+                    <Link to={`/product/${product.id}`}>
                       <h5 className='card-title'>{product.title}</h5>
                     </Link>
                     <p className='card-text'>Price: ${product.price}</p>

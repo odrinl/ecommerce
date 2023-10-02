@@ -2,9 +2,7 @@ ul,
 li {
   all: initial;
 }
-.active {
-  background-color: #c42020;
-}
+
 .nav {
   display: flex;
   justify-content: space-between;

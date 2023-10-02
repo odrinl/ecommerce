@@ -10,9 +10,9 @@ function NavBar() {
     <nav className='navbar navbar-expand-lg bg-body-tertiary'>
       <div className='nav container-fluid'>
         <NavLink to={'/'}>
-          <button>
+          <div className='navbar-brand'>
             <h1>My Shop</h1>
-          </button>
+          </div>
         </NavLink>
         <button
           className='navbar-toggler'
@@ -27,17 +27,23 @@ function NavBar() {
         </button>
         <div className='navbar-collapse collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav d-flex me-auto mb-2 mb-lg-0 align-items-center'>
-            <li>
+            <li className='nav-item mx-2 m-2'>
               <Link to={'/products'}>
-                <button className={isAllProductsActive ? 'active' : ''}>
+                <button
+                  className={`nav-link p-2 nav-item btn btn-light ${
+                    isAllProductsActive ? 'active' : ''
+                  }`}
+                >
                   All Products
                 </button>
               </Link>
             </li>
-            <li>
+            <li className='nav-item mx-2 m-2'>
               <Link to={'/favorites'}>
                 <button
-                  className={location.pathname === '/favorites' ? 'active' : ''}
+                  className={`nav-link p-2 nav-item btn btn-light ${
+                    location.pathname === '/favorites' ? 'active' : ''
+                  }`}
                 >
                   Favorites
                 </button>
