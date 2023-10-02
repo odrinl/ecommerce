@@ -7,17 +7,18 @@ li {
   display: flex;
   justify-content: space-between;
 }
-.categories ul {
-  display: flex;
-  justify-content: space-evenly;
-}
 
 .nav-item,
 a {
   color: rgb(74, 143, 212);
+  text-decoration: none;
 }
 .card-body {
   padding-left: 1.5rem;
+}
+
+.navbar-brand h1 {
+  margin: 0 2rem;
 }
 
 .bi::before {

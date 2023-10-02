@@ -26,8 +26,8 @@ function NavBar() {
           <span className='navbar-toggler-icon'></span>
         </button>
         <div className='navbar-collapse collapse' id='navbarSupportedContent'>
-          <ul className='navbar-nav d-flex me-auto mb-2 mb-lg-0 align-items-center'>
-            <li className='nav-item mx-2 m-2'>
+          <div className='navbar-nav d-flex me-auto mb-2 mb-lg-0 align-items-center'>
+            <div className='nav-item mx-2 m-2'>
               <Link to={'/products'}>
                 <button
                   className={`nav-link p-2 nav-item btn btn-light ${
@@ -37,8 +37,8 @@ function NavBar() {
                   All Products
                 </button>
               </Link>
-            </li>
-            <li className='nav-item mx-2 m-2'>
+            </div>
+            <div className='nav-item mx-2 m-2'>
               <Link to={'/favorites'}>
                 <button
                   className={`nav-link p-2 nav-item btn btn-light ${
@@ -48,8 +48,8 @@ function NavBar() {
                   Favorites
                 </button>
               </Link>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
       <CategoriesList />
