@@ -24,3 +24,12 @@ a {
 .bi::before {
   font-size: 2rem;
 }
+.info {
+  align-items: stretch !important;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.card-title {
+  color: rgb(74, 143, 212);
+}
