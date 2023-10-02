@@ -14,7 +14,7 @@ function ProductItem() {
 
   return (
     <div>
-      {isLoading && <div>Products are loading...</div>}
+      {isLoading && <div>Product is loading...</div>}
       {error && <div>Error: {error.message}</div>}
       {data && (
         <div>
