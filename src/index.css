@@ -1,0 +1,27 @@
+ul,
+li {
+  all: initial;
+}
+.active {
+  background-color: #c42020;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+.categories ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-item,
+a {
+  color: rgb(74, 143, 212);
+}
+.card-body {
+  padding-left: 1.5rem;
+}
+
+.bi::before {
+  font-size: 2rem;
+}

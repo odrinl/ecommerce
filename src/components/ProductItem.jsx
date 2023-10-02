@@ -20,11 +20,9 @@ function ProductItem() {
         <div>
           <button onClick={() => navigate(-1)}>Back</button>
           <i
-            className={
-              likedProducts.includes(data.id)
-                ? 'bi bi-heart-fill'
-                : 'bi bi-heart'
-            }
+            className={`bi ${
+              likedProducts.includes(data.id) ? 'bi-heart-fill' : 'bi-heart'
+            } bi-lg position-absolute top-0 end-0 m-2`}
             onClick={() => toggleLike(data.id)}
           ></i>
           <h3>{data.title}</h3>

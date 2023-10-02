@@ -47,11 +47,11 @@ function Favorites() {
             {likesData.map((product) => (
               <li key={product.id}>
                 <i
-                  className={
+                  className={`bi ${
                     likedProducts.includes(product.id)
-                      ? 'bi bi-heart-fill'
-                      : 'bi bi-heart'
-                  }
+                      ? 'bi-heart-fill'
+                      : 'bi-heart'
+                  } bi-lg position-absolute top-0 end-0 m-2`}
                   onClick={() => toggleLike(product.id)}
                 ></i>
                 {/* <img src={product.image} alt={product.title} /> */}
