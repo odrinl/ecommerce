@@ -1,18 +1,18 @@
 import React, { useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
-import useRouting from '../hooks/useRouting';
 import { CategoryContext } from '../context/CategoryContext';
 import ProductItem from '../components/ProductItem';
 
 function Favorites() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const {
     data: favoriteProducts,
     loading,
     error,
   } = useFetch(`https://fakestoreapi.com/products/${id}`);
-  const { navigateTo } = useRouting();
+
   const { toggleLike } = useContext(CategoryContext);
 
   useEffect(() => {
@@ -43,10 +43,11 @@ function Favorites() {
   return (
     <div>
       <h2>My Favorite Products</h2>
-      {favoriteProducts.map((product) => (
-        <ProductItem key={product.id} product={product} />
-      ))}
-      <button onClick={() => navigateTo('/cart')}>Go to Cart</button>
+      {!favoriteProducts &&
+        favoriteProducts.map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+      <button onClick={() => navigate(-1)}>Back</button>
     </div>
   );
 }

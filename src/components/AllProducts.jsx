@@ -1,9 +1,8 @@
 import React from 'react';
 import useFetch from '../hooks/useFetch';
-import useRouting from '../hooks/useRouting';
+import { Link } from 'react-router-dom';
 
 function AllProducts() {
-  const { navigateTo } = useRouting();
   const {
     data: products,
     loading,
@@ -29,9 +28,9 @@ function AllProducts() {
               {' '}
               <img src={product.image} alt={product.title} />
               {product.title} - {product.price}
-              <button onClick={() => navigateTo(`/product/${product.id}`)}>
-                More...
-              </button>
+              <Link to={`/product/${product.id}`}>
+                <button>More...</button>
+              </Link>
             </li>
           ))}
         </ul>

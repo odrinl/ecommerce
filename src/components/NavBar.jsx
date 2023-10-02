@@ -1,36 +1,36 @@
 import React from 'react';
-import useRouting from '../hooks/useRouting';
 import CategoriesList from './CategoriesList';
+import { Link, useLocation } from 'react-router-dom';
 
 function NavBar() {
-  const { currentRoute, navigateTo } = useRouting();
-
+  const location = useLocation();
   return (
     <nav>
       <div className='nav'>
-        <button
-          className={currentRoute === '/' ? 'active' : ''}
-          onClick={() => navigateTo('/')}
-        >
-          <h1>My Shop</h1>
-        </button>
+        <Link to={'/'}>
+          <button className={location.pathname === '/' ? 'active' : ''}>
+            <h1>My Shop</h1>
+          </button>
+        </Link>
 
         <ul>
           <li>
-            <button
-              className={currentRoute === '/products' ? 'active' : ''}
-              onClick={() => navigateTo('/products')}
-            >
-              All Products
-            </button>
+            <Link to={'/products'}>
+              <button
+                className={location.pathname === '/products' ? 'active' : ''}
+              >
+                All Products
+              </button>
+            </Link>
           </li>
           <li>
-            <button
-              className={currentRoute === '/favorites' ? 'active' : ''}
-              onClick={() => navigateTo('/favorites')}
-            >
-              Favorites
-            </button>
+            <Link to={'/favorites'}>
+              <button
+                className={location.pathname === '/favorites' ? 'active' : ''}
+              >
+                Favorites
+              </button>
+            </Link>
           </li>
         </ul>
       </div>

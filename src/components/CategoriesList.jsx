@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import useRouting from '../hooks/useRouting';
+import React from 'react';
 import useFetch from '../hooks/useFetch';
 import FetchError from '../errorHandling/FetchError';
-import { CategoryContext } from '../context/CategoryContext';
+
+import { Link, useLocation } from 'react-router-dom';
 
 function CategoriesList() {
-  const { currentRoute, navigateTo } = useRouting();
-  const { setSelectedCategory } = useContext(CategoryContext);
+  const location = useLocation();
+
   const { data, isLoading, error } = useFetch(
     'https://fakestoreapi.com/products/categories'
   );
@@ -19,25 +19,23 @@ function CategoriesList() {
     return <FetchError />;
   }
 
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-    navigateTo(`/products/${category}`);
-  };
-
   return (
     <div className='categories'>
       <ul>
         {data &&
           data.map((category, index) => (
             <li key={index}>
-              <button
-                className={
-                  currentRoute === `/category/${category}` ? 'active' : ''
-                }
-                onClick={() => handleCategoryClick(category)}
-              >
-                {category}
-              </button>
+              <Link to={`/category/${category}`}>
+                <button
+                  className={
+                    location.pathname === `/category/${encodeURI(category)}`
+                      ? 'active'
+                      : ''
+                  }
+                >
+                  {category}
+                </button>
+              </Link>
             </li>
           ))}
       </ul>

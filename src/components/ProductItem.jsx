@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-function ProductItem({ product, likedProducts, toggleLike }) {
+function ProductItem() {
+  const navigate = useNavigate();
+  const { id } = useParams();
   return (
     <div>
-      <h3>{product.title}</h3>
-      <p>{product.description}</p>
-      <p>Price: {product.price}</p>
-      <button onClick={() => toggleLike(product.id)}>
-        {likedProducts.includes(product.id) ? 'Unlike' : 'Like'}
-      </button>
-      <Link to={`/product/${product.id}`}>View Details</Link>
+      <button onClick={() => navigate(-1)}>Back</button>
+      <h3>{id.title}</h3>
+      <p>{id.description}</p>
+      <p>Price: {id.price}</p>
     </div>
   );
 }
