@@ -1,15 +1,19 @@
 import React from 'react';
 import useFetch from '../hooks/useFetch';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { useLikeContext } from '../context/LikeContext';
+import ProductCard from './ProductCard';
 
-function ProductsList() {
-  const { likedProducts, toggleLike } = useLikeContext();
+function ProductsList({ url }) {
   const { category } = useParams();
-  const { data, isLoading, error } = useFetch(
-    `https://fakestoreapi.com/products/category/${category}`
-  );
+
+  let apiUrl;
+  if (url === 'all') {
+    apiUrl = 'https://fakestoreapi.com/products';
+  } else {
+    apiUrl = `https://fakestoreapi.com/products/category/${category}`;
+  }
+
+  const { data, isLoading, error } = useFetch(apiUrl);
 
   return (
     <div>
@@ -20,31 +24,7 @@ function ProductsList() {
           <br />
           <div className='row align-content-center'>
             {data.map((product) => (
-              <div key={product.id} className='col-12 col-md-6 col-lg-3 mb-4'>
-                <div className='card h-100'>
-                  <div className='card-body d-flex align-items-center justify-content-center'>
-                    <i
-                      className={`bi ${
-                        likedProducts.includes(product.id)
-                          ? 'bi-heart-fill'
-                          : 'bi-heart'
-                      } bi-lg position-absolute top-0 end-0 m-2`}
-                      onClick={() => toggleLike(product.id)}
-                    ></i>
-                    <img
-                      src={product.image}
-                      alt={product.title}
-                      className='card-img-top'
-                    />
-                  </div>
-                  <div className='card-footer d-flex flex-column mt-auto'>
-                    <Link to={`/product/${product.id}`}>
-                      <h5 className='card-title'>{product.title}</h5>
-                    </Link>
-                    <p className='card-text'>Price: ${product.price}</p>
-                  </div>
-                </div>
-              </div>
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>

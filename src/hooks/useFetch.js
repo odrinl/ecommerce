@@ -15,11 +15,10 @@ function useFetch(url) {
         }
         const data = await response.json();
         setData(data);
-        setIsLoading(false);
       } catch (error) {
         setError(error);
-        setIsLoading(false);
       }
+      setIsLoading(false);
     };
 
     fetchData();
